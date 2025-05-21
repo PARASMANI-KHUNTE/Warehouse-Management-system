@@ -1,0 +1,152 @@
+/* Tailwind CSS base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  @apply text-gray-800 bg-gray-50;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Custom component classes */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 ease-in-out;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 w-full sm:w-auto;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+  }
+
+  .btn-success {
+    @apply bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+
+  .btn-danger {
+    @apply bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500;
+  }
+
+  .btn-warning {
+    @apply bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-500;
+  }
+
+  .btn-info {
+    @apply bg-info-600 text-white hover:bg-info-700 focus:ring-info-500;
+  }
+
+  .btn-light {
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500;
+  }
+
+  .btn-dark {
+    @apply bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-700;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50;
+  }
+
+  .stat-card {
+    @apply transition-all duration-300 ease-in-out hover:translate-y-[-5px] hover:shadow-md;
+    animation: slideInFromBottom 0.5s ease-in-out;
+  }
+
+  .chart-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-md;
+    animation: fadeIn 0.7s ease-in-out;
+  }
+  
+  .chart-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .input {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm py-2 px-3;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .page-subtitle {
+    @apply mt-1 text-sm text-gray-500;
+  }
+
+  .page-container {
+    @apply p-4 sm:p-6 lg:p-8 animate-[fadeIn_0.3s_ease-in-out] mt-2 md:mt-4;
+  }
+
+  .stat-card {
+    @apply animate-[slideInFromBottom_0.5s_ease-in-out];
+    animation-fill-mode: both;
+  }
+
+  .stat-card:nth-child(1) { animation-delay: 0.1s; }
+  .stat-card:nth-child(2) { animation-delay: 0.2s; }
+  .stat-card:nth-child(3) { animation-delay: 0.3s; }
+  .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+  .chart-card {
+    @apply animate-[fadeIn_0.8s_ease-in-out];
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
+  }
+
+  .data-table {
+    @apply animate-[fadeIn_1s_ease-in-out];
+    animation-fill-mode: both;
+    animation-delay: 0.7s;
+  }
+}
